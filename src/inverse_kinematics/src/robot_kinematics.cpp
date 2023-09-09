@@ -35,7 +35,7 @@
      *
      */
 
-#include "robot_kinematics.h"
+#include "ros2_inverse_kinematics/robot_kinematics.h"
 
 #include <cmath>
 
