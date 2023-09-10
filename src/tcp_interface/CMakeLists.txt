@@ -22,8 +22,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 ament_auto_add_library(tcp_interface_component SHARED
+        include/tcp_interface/tcp_node.hpp
         src/tcp_node.cpp)
 
+target_link_libraries(tcp_interface_component)
 
 rclcpp_components_register_node(tcp_interface_component
         PLUGIN "tcp_interface::TcpInterface"

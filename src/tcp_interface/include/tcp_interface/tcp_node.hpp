@@ -2,8 +2,8 @@
 // Created by ryuzo on 2022/08/08.
 //
 
-#ifndef ROS2_MASTER_SOCKETCAN_TX_NODE_HPP
-#define ROS2_MASTER_SOCKETCAN_TX_NODE_HPP
+#ifndef ROS2_MASTER_TCP_NODE_HPP
+#define ROS2_MASTER_TCP_NODE_HPP
 
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp_lifecycle/lifecycle_node.hpp>
@@ -14,7 +14,7 @@
 
 #include "tcp_interface/msg/tcp_socket.hpp"
 #include "tcp_interface/srv/tcp_socket_i_ctrl.hpp"
-#include "ros2_tcp_interface/visibility_control.h"
+#include "visibility_control.h"
 
 using LNI = rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface;
 
@@ -64,4 +64,4 @@ namespace tcp_interface {
     };
 }
 
-#endif //ROS2_MASTER_SOCKETCAN_TX_NODE_HPP
+#endif //ROS2_MASTER_TCP_NODE_HPP

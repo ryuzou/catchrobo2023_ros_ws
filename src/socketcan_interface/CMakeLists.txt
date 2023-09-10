@@ -18,8 +18,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 ament_auto_add_library(socketcan_interface_component SHARED
+        include/socketcan_interface/socketcan_node.hpp
         src/socketcan_node.cpp)
 
+target_link_libraries(socketcan_interface_component)
 
 rclcpp_components_register_node(socketcan_interface_component
         PLUGIN "socketcan_interface::SocketcanInterface"

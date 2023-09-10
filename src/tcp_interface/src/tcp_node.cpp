@@ -18,7 +18,7 @@
 #include <sys/epoll.h>
 
 #include "std_msgs/msg/string.hpp"
-#include "ros2_tcp_interface/tcp_node.hpp"
+#include "tcp_interface/tcp_node.hpp"
 
 
 #include <rclcpp_components/register_node_macro.hpp>

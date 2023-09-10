@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <cstdio>
 
-#include "ros2_socketcan_interface/socketcan_node.hpp"
+#include "socketcan_interface/socketcan_node.hpp"
 
 namespace socketcan_interface {
 
