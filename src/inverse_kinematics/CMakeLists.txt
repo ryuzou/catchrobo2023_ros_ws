@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(inverse_kinematics_package)
+project(inverse_kinematics)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,14 +7,34 @@ endif()
 
 # find dependencies
 find_package(ament_cmake_auto REQUIRED)
-ament_auto_find_build_dependencies()
+find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_ros REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(ament_lint_common)
+find_package(ament_lint_auto)
 
-ament_auto_add_library(inverse_kinematics_node SHARED src/inverse_kinematics_node.cpp)
+include_directories(include)
 
-install(TARGETS
-        inverse_kinematics_node
-        DESTINATION lib/${PROJECT_NAME}
-        LIBRARY DESTINATION lib)
+add_library(${PROJECT_NAME}
+        src/robot_kinematics.cpp
+        include/inverse_kinematics/robot_kinematics.h
+        include/inverse_kinematics/posrot_vector.h
+)
+
+install(TARGETS ${PROJECT_NAME}
+        EXPORT "export_${PROJECT_NAME}"
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION lib
+        INCLUDES DESTINATION include
+)
+
+install(DIRECTORY include/${PROJECT_NAME}/
+        DESTINATION include/${PROJECT_NAME}
+)
+
+ament_export_include_directories(include)
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -28,4 +48,5 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-ament_auto_package()
+ament_export_targets("export_${PROJECT_NAME}")
+ament_package()

@@ -14,7 +14,6 @@
 const float robot_pos[6] = {675, -130, 228, 0, 0, 0};
 
 
-
 class robot_kinematics {
     /*
      * The unit of length is [mm], and the unit of angle is [rad].
@@ -57,24 +56,24 @@ private:
     float joint_angle_lim[4][2];//rad, {inf, sup}
 
 
-    float r_posrot_trg[6];
-    float r_posrot_now[6];
+    //float r_posrot_trg[6];
+    //float r_posrot_now[6];
 
 
-    float posrot_trg[6];
-    float posrot_now[6];
+    //float posrot_trg[6];
+    //float posrot_now[6];
     /* posrot_vec posrot_trg;
      * posrot_vec posrot_now;
      */
-    void convert_field2robot(float*, float*);
+    void convert_field2robot(float *, float *);
 
 
 public:
-    void inverse_kinematics(float*, float*);
-    void forward_kinematics(float*, float*);
+    robot_kinematics();
 
+    void inverse_kinematics(float *, float *);
 
-
+    void forward_kinematics(float *, float *);
 
 
 };
