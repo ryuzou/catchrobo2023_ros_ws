@@ -229,7 +229,7 @@ namespace tcp_interface {
         ev.data.fd = newconnection_eventfd;
         epoll_ctl(epfd, EPOLL_CTL_ADD, newconnection_eventfd, &ev);
 
-        int timeout_ms = 500;
+        int timeout_ms = 100;
         int nfds = epoll_wait(epfd, &ev, 1, timeout_ms);
         if (nfds == -1) {
             RCLCPP_ERROR(this->get_logger(), "EPOLL ERROR");
@@ -238,7 +238,7 @@ namespace tcp_interface {
         } else if (nfds == 0) {
             RCLCPP_ERROR(this->get_logger(), "SIGWAIT TIMEOUT");
             RCLCPP_ERROR(this->get_logger(), "error:%s", strerror(errno));
-            response->ack = false;
+            //response->ack = false;
         } else {
             uint64_t counter;
             read(newconnection_eventfd, &counter, sizeof(counter));
